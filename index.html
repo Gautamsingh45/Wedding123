@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wedding Page</title>
+  <style>
+    body {
+        background-image: linear-gradient(white , Black);
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0px;
+    }
+
+    h1 {
+      color: rgb(18, 17, 17);
+      text-align: center;
+      font-style: italic;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+    h2{
+      color: white;
+      text-align: center;
+      font-style: italic;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .story-container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #f7f7f7;
+      display: flex;
+      align-items: center;
+    }
+
+    .story-container img {
+      width: 200px;
+      height: auto;
+      margin-right: 20px;
+    }
+
+    .story-container p {
+      line-height: 1.5;
+    }
+
+    .bottom-content {
+      text-align: center;
+      margin-top: 40px;
+    }
+    #video-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      overflow: hidden;
+    }
+
+    #video-background {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    #logo-container {
+       
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 1;
+    }
+
+    #logo-container img {
+      max-width: 500px;
+      height: auto;
+    }
+    .album-container {
+      max-width: 100%;
+      margin: 40px auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-gap: 20px;
+    }
+
+    .album-container img {
+      width:  500px;
+      height: 500px;
+      height: auto;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
+    .album-container img:hover {
+      transform: scale(1.1);
+    }
+
+
+    .video-slider {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .video-slider .slides {
+      display: flex;
+      width: 300%;
+    
+      animation: slideAnimation 55s infinite;
+    }
+
+    .video-slider .slide {
+      flex: 1 0 100%;
+      height: 100%;
+    }
+
+    .video-slider .slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    @keyframes slideAnimation {
+      0% {
+        transform: translateX(0);
+      }
+      25% {
+        transform: translateX(-100%);
+      }
+      50% {
+        transform: translateX(-200%);
+      }
+      75% {
+        transform: translateX(-300%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      grid-gap: 10px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .blog-video {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-video video {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .blog-video .video-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      cursor: pointer;
+    }
+
+    .blog-video:hover .video-overlay {
+      opacity: 1;
+    }
+
+    .blog-video .video-overlay i {
+      font-size: 48px;
+    }
+  </style>
+  <script>
+    function openFullScreen(imageSrc) {
+      var fullscreenImage = document.getElementById("fullscreen-image");
+      fullscreenImage.src = imageSrc;
+      fullscreenImage.classList.add("show");
+
+      if (fullscreenImage.requestFullscreen) {
+        fullscreenImage.requestFullscreen();
+      } else if (fullscreenImage.mozRequestFullScreen) {
+        fullscreenImage.mozRequestFullScreen();
+      } else if (fullscreenImage.webkitRequestFullscreen) {
+        fullscreenImage.webkitRequestFullscreen();
+      } else if (fullscreenImage.msRequestFullscreen) {
+        fullscreenImage.msRequestFullscreen();
+      }
+    }
+
+    function closeFullScreen() {
+      var fullscreenImage = document.getElementById("fullscreen-image");
+      fullscreenImage.classList.remove("show");
+
+      if (document.exitFullscreen) {
+        document.exitFullscreen();
+      } else if (document.mozCancelFullScreen) {
+        document.mozCancelFullScreen();
+      } else if (document.webkitExitFullscreen) {
+        document.webkitExitFullscreen();
+      } else if (document.msExitFullscreen) {
+        document.msExitFullscreen();
+      }
+    }
+  </script>
+</head>
+<body>
+  <div id="video-container">
+    <video id="video-background" autoplay loop muted>
+      <source src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" type="video/mp4">
+    </video>
+
+    <div id="logo-container">
+      <img src="./Wordmark Black.png" alt="Wedding Logo">
+      <center><h1><a href="">Book now</a></h1></center>
+    </div>
+  </div>
+ <h1>Picture</h1>
+  <div class="album-container">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-skg-photography-2053852.jpg" alt="Image 1" onclick="openFullScreen('./pexels-skg-photography-2053852.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+    <img src="./pexels-viresh-studio-2060240.jpg" alt="Image 2" onclick="openFullScreen('./pexels-viresh-studio-2060240.jpg')">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Image 3" onclick="openFullScreen('./pexels-farddin-protik-2106685.jpg')">
+   
+    <img id="fullscreen-image" onclick="closeFullScreen()">
+  </div>
+  <h1>Our Story</h1>
+  
+  <div class="story-container">
+    <img src="./pexels-farddin-protik-2106685.jpg" alt="Story Image">
+    <div>
+      <h2>Chapter 1: The Beginning</h2>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer at nisi eget mauris tristique mattis. Sed vestibulum est ut odio ultrices, eu tristique quam viverra.</p>
+      
+      <h2>Chapter 2: Falling in Love</h2>
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Sed non feugiat arcu. Curabitur convallis mauris non leo tincidunt.</p>
+      
+      <h2>Chapter 3: The Proposal</h2>
+      <p>Donec at ullamcorper ipsum. Duis nec justo non enim vestibulum accumsan. Vestibulum mollis mauris id orci elementum, ac blandit nulla tincidunt.</p>
+    </div>
+  </div>
+  <center><h2>Live Video</h2></center>
+  
+  <div class="video-slider">
+    <div class="slides">
+      <div class="slide">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop ></video>
+      </div>
+      <div class="slide">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+      </div>
+      <div class="slide">
+        <video src="./pexels-hasan-sayeed-14299460-1920x1080-25fps.mp4" autoplay muted loop></video>
+      </div>
+      <div class="slide">
+        <video src="./pexels-hasan-sayeed-14299460-1920x1080-25fps.mp4" autoplay muted loop></video>
+      </div>
+    </div>
+  </div>
+  <h1>Instagram Blog</h1>
+  <div class="blog-grid">
+    <div class="blog-video">
+      <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+      <div class="video-overlay">
+        <i class="fa fa-play-circle-o"></i>
+      </div>
+    </div>
+    <div class="blog-video">
+      <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+      <div class="video-overlay">
+        <i class="fa fa-play-circle-o"></i>
+      </div>
+    </div>
+    <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-albela-raahi-14988161-1280x720-50fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+      <div class="blog-video">
+        <video src="./pexels-aman-ragde-12597431-1920x1080-25fps.mp4" autoplay muted loop></video>
+        <div class="video-overlay">
+          <i class="fa fa-play-circle-o"></i>
+        </div>
+      </div>
+
+    <!-- Add more blog-video elements for the remaining videos -->
+  </div>
+  
+  <div class="bottom-content">
+    <h3>Thank you for sharing our journey!</h3>
+    <p>Stay tuned for updates on our upcoming wedding celebration.</p>
+  </div>
+  <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+
+  <script>
+    // Play/pause the video when the overlay is clicked
+    var videoElements = document.querySelectorAll('.blog-video video');
+    var overlayElements = document.querySelectorAll('.blog-video .video-overlay');
+
+    overlayElements.forEach(function(overlay, index) {
+      overlay.addEventListener('click', function() {
+        var video = videoElements[index];
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      });
+    });
+  </script>
+  <script>
+    // Pause videos when not in the current slide
+    var slider = document.querySelector('.video-slider');
+    slider.addEventListener('mouseover', function() {
+      var videos = this.querySelectorAll('video');
+      videos.forEach(function(video) {
+        if (!video.paused) {
+          video.pause();
+        }
+      });
+    });
+
+    slider.addEventListener('mouseout', function() {
+      var videos = this.querySelectorAll('video');
+      videos.forEach(function(video) {
+        if (video.paused) {
+          video.play();
+        }
+      });
+    });
+  </script>
+  <script>
+    var videoElements = document.querySelectorAll('.blog-video video');
+    var overlayElements = document.querySelectorAll('.blog-video .video-overlay');
+
+    overlayElements.forEach(function(overlay, index) {
+      overlay.addEventListener('click', function() {
+        var video = videoElements[index];
+        if (video.requestFullscreen) {
+          video.requestFullscreen();
+        } else if (video.mozRequestFullScreen) {
+          video.mozRequestFullScreen();
+        } else if (video.webkitRequestFullscreen) {
+          video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) {
+          video.msRequestFullscreen();
+        }
+      });
+    });
+  </script>
+</body>
+</html>
